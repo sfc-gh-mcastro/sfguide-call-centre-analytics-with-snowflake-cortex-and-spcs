@@ -6,3 +6,5 @@ dependencies:
   - snowflake-snowpark-python
   - plotly
   - streamlit-echarts
+  - snowflake-ml-python
+  - tabulate

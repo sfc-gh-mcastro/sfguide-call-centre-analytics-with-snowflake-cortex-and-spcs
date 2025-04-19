@@ -5,7 +5,7 @@ import re
 
 def chatbot(session:Session):
 
-    st.subheader("Call Centre Insurance Assistant - RAG based approach")
+    st.subheader("Call Centre Insurance Assistant - Cortex Search")
 
     with st.expander("ℹ️ Instructions",expanded=True):
         st.markdown(
@@ -24,6 +24,10 @@ def chatbot(session:Session):
 
             """
         )
+        
+    # Resetting the states
+    #TODO: Keep different session states for cortex analyst and cortex search
+    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
     
 
     # with open('creds.json') as f:

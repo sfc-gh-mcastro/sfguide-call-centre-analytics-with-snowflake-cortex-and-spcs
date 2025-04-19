@@ -14,4 +14,5 @@ entities:
       - pages
       - common/hello.py
       - src
+      - call_center_analytics.yaml
 
