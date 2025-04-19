@@ -1,0 +1,312 @@
+name: call_center_analytics
+description: This semantic model allows for natural language queries in order to analyse insurance call center audio files containing duration, information about call to action, customer, intent, issue, policy number, purpose of the call. representative and resolution.
+tables:
+  - name: STREAMLITAPPTABLE
+    base_table:
+      database: LLMDEMO
+      schema: PUBLIC
+      table: STREAMLITAPPTABLE
+    dimensions:
+      - name: AUDIO_FILE_NAME
+        expr: AUDIO_FILE_NAME
+        data_type: VARCHAR(100)
+        sample_values:
+          - audiofile1.mp3
+          - audiofile2.mp3
+          - audiofile3.mp3
+        description: The name of the audio file being referenced in the application.
+        synonyms:
+          - audio_file_title
+          - audio_filename
+          - audio_clip_name
+          - audio_recording_name
+          - audio_track_name
+          - sound_file_name
+          - voice_file_name
+          - audio_data_name
+      - name: CALLTOACTION
+        expr: CALLTOACTION
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Expedite claim review
+          - Review claim details and provide resolution plan
+          - Investigate and resolve dispute
+        description: This column captures the specific action required to be taken by the claims team to move a claim forward, such as expediting the review process, providing a resolution plan, or investigating and resolving a dispute.
+        synonyms:
+          - call_to_action
+          - action_required
+          - next_step
+          - recommended_action
+          - suggested_action
+          - action_item
+          - follow_up_action
+          - required_action
+      - name: CLAIMNUMBER
+        expr: CLAIMNUMBER
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - CLM987654
+          - CLM456789
+          - CLM789012
+        description: Unique identifier assigned to a claim, used to track and manage the claim throughout its lifecycle.
+        synonyms:
+          - claim_id
+          - claim_reference
+          - policy_claim_number
+          - insurance_claim_number
+          - claim_identifier
+          - claim_code
+      - name: CUSTOMER
+        expr: CUSTOMER
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Rachel Anderson
+          - Andrew Simmons
+          - Alex Johnson
+        description: The name of the customer who has interacted with the application.
+        synonyms:
+          - client
+          - patron
+          - buyer
+          - purchaser
+          - consumer
+          - user
+          - subscriber
+          - account_holder
+          - individual
+          - person
+      - name: INTENT
+        expr: INTENT
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Dispute Resolution
+          - Dispute
+          - Assistance with recent car accident
+        description: The purpose of the customer's interaction with the company, such as resolving a dispute, seeking assistance with a recent car accident, or general dispute inquiries.
+        synonyms:
+          - goal
+          - purpose
+          - objective
+          - aim
+          - target
+          - intention
+          - objective
+          - motive
+          - reason
+      - name: ISSUE_Data
+        expr: ISSUE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Misunderstanding regarding coverage
+          - Mistake in assessment of damages
+          - Error in assessment of damages
+        description: This column captures the specific reason or issue that led to a dispute or discrepancy in the insurance claim process, providing insight into the root cause of the problem.
+        synonyms:
+          - problem
+          - concern
+          - complaint
+          - matter
+          - topic
+          - subject
+          - grievance
+          - trouble
+          - defect
+      - name: POLICYNUMBER
+        expr: POLICYNUMBER
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Not Found
+          - POL345678
+          - POL456789
+        description: Unique identifier assigned to a specific insurance policy.
+        synonyms:
+          - policy_id
+          - policy_code
+          - insurance_number
+          - policy_reference
+          - contract_number
+          - account_number
+          - policy_identifier
+      - name: PURPOSEOFCALL
+        expr: PURPOSEOFCALL
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Resolve dispute
+          - Dispute resolution
+          - Seeking assistance with car accident claim
+        description: The purpose or reason for the customer's call to the company.
+        synonyms:
+          - reason_for_call
+          - call_purpose
+          - call_reason
+          - intent_of_call
+          - call_objective
+          - purpose_of_contact
+          - call_description
+      - name: REPRESENTATIVE
+        expr: REPRESENTATIVE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Emily
+          - James
+          - Sarah
+        description: The name of the sales representative associated with the streamlit app.
+        synonyms:
+          - agent
+          - representative_name
+          - rep
+          - customer_service_agent
+          - customer_support_agent
+          - call_agent
+          - account_representative
+          - customer_representative
+          - service_representative
+      - name: RESOLUTION
+        expr: RESOLUTION
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Claim review expedited
+          - To be determined
+          - Investigate and provide resolution
+        description: The resolution status of a claim, indicating the current stage or outcome of the claim review process.
+        synonyms:
+          - solution
+          - outcome
+          - result
+          - conclusion
+          - settlement
+          - answer
+          - fix
+          - remedy
+          - resolve
+          - final_result
+          - disposition
+      - name: RESPONSEMODE
+        expr: RESPONSEMODE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Proactive
+          - Phone call
+          - Support
+        description: The method by which the customer or user initiates or responds to a request or issue, such as reaching out proactively, receiving a phone call, or seeking support.
+        synonyms:
+          - response_type
+          - communication_method
+          - reply_mode
+          - interaction_mode
+          - feedback_channel
+          - answer_format
+          - reaction_method
+          - reply_format
+      - name: MODEOFUPDATE
+        expr: MODEOFUPDATE
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Email
+          - Phone call
+          - Phone
+        description: The method by which the application's status was last updated, such as through an email notification, a phone call, or a direct phone update.
+        synonyms:
+          - update_method
+          - update_type
+          - update_mode
+          - modification_mode
+          - change_method
+          - revision_type
+          - edit_mode
+          - update_category
+      - name: NEXTSTEPS
+        expr: NEXTSTEPS
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Claims department review
+          - James will review claim details and get back to Andrew with a resolution plan
+          - Keep customer updated
+        description: This column captures the next steps or actions required to progress a claim, as outlined by the claims department or assigned personnel, ensuring that the customer is informed and updated throughout the process.
+        synonyms:
+          - action_items
+          - follow_up_tasks
+          - subsequent_actions
+          - future_steps
+          - to_do_list
+          - recommended_actions
+          - further_actions
+          - planned_activities
+      - name: CALLSENTIMENT
+        expr: CALLSENTIMENT
+        data_type: VARCHAR(8)
+        sample_values:
+          - Positive
+          - Negative
+        description: The sentiment of the call, indicating whether the overall tone of the call was Positive or Negative.
+        synonyms:
+          - call_emotion
+          - call_tone
+          - call_attitude
+          - sentiment_score
+          - call_mood
+          - emotional_response
+          - caller_sentiment
+          - conversation_sentiment
+      - name: FIRSTCALLRESOLUTION
+        expr: FIRSTCALLRESOLUTION
+        data_type: VARCHAR(3)
+        sample_values:
+          - 'Yes'
+          - 'No'
+        description: Indicates whether the customer's issue was resolved on the first call to the support team.
+        synonyms:
+          - first_time_fix
+          - one_call_resolution
+          - resolved_on_first_attempt
+          - first_contact_resolution
+          - single_call_resolution
+          - issue_resolved_first_time
+    time_dimensions:
+      - name: DATETIME
+        expr: DATETIME
+        data_type: DATE
+        sample_values:
+          - '2023-11-11'
+          - '2023-11-15'
+          - '2023-11-21'
+        description: Date of Application Submission
+        synonyms:
+          - date
+          - timestamp
+          - time_of_day
+          - date_time
+          - date_stamp
+          - time_stamp
+          - calendar_date
+          - schedule_date
+          - log_date
+          - event_time
+    facts:
+      - name: DURATION
+        expr: DURATION
+        data_type: FLOAT
+        sample_values:
+          - '218.2542711'
+          - '75.17238244'
+          - '199.7103538'
+        description: The duration of time spent on a particular activity or task, measured in seconds.
+        synonyms:
+          - length
+          - time
+          - span
+          - period
+          - elapsed_time
+          - time_elapsed
+          - call_length
+          - call_duration
+          - audio_length
+verified_queries:
+  - name: 2023 Purpose of calls
+    question: |+
+      What are the distinct purposes of calls in 2023? Please include the count in descending order.
+
+    use_as_onboarding_question: false
+    sql: SELECT purposeofcall, COUNT(*) AS call_count FROM streamlitapptable WHERE DATE_TRUNC('YEAR', datetime) = '2023-01-01' GROUP BY purposeofcall ORDER BY call_count DESC NULLS LAST
+    verified_by: Marcel Castro
+    verified_at: 1745096118
